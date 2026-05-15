@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Share2, Bot, Database, Globe } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export function AgentNetworkView() {
   const nodes = [
@@ -73,5 +74,3 @@ export function AgentNetworkView() {
     </div>
   );
 }
-
-import { cn } from '@/lib/utils';
