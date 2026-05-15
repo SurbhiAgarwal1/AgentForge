@@ -22,6 +22,8 @@
 ## ✨ Key Features
 
 - **🧠 Advanced Agent Management**: Create and configure specialized AI agents with unique personas and capabilities.
+- **🌐 Forge Marketplace**: Discover and deploy pre-trained agent templates for research, development, and security.
+- **👁️ Agent Thought Stream**: Real-time observability into agent reasoning, tool calls, and logic cycles.
 - **🔗 Visual Workflow Builder**: Design complex multi-agent interactions using our drag-and-drop workflow editor powered by `React Flow`.
 - **💾 Persistent Agent Memory**: Give your agents long-term context and memory, stored securely via Supabase.
 - **📊 Real-time Analytics**: Monitor agent performance and deployment metrics with interactive charts.
