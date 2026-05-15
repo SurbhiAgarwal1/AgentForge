@@ -135,6 +135,7 @@ export default function SettingsPage() {
   const [notifDeploy, setNotifDeploy] = useState(true);
   const [notifErrors, setNotifErrors] = useState(true);
   const [notifReviews, setNotifReviews] = useState(false);
+  const [localMode, setLocalMode] = useState(false);
 
   return (
     <motion.div
@@ -217,6 +218,15 @@ export default function SettingsPage() {
           checked={autoDeploy}
           onChange={setAutoDeploy}
         />
+
+        <div className="pt-4 border-t border-white/5 mt-4">
+          <SwitchField
+            label="Local Intelligence Mode"
+            description="Run models locally via Ollama or WebGPU when available"
+            checked={localMode}
+            onChange={setLocalMode}
+          />
+        </div>
       </GlassCard>
 
       {/* Deployment Settings */}
