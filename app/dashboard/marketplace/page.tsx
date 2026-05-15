@@ -11,8 +11,7 @@ import {
   ExternalLink,
   Bot,
   Zap,
-  Shield,
-  SearchCode
+  Shield
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -25,7 +24,7 @@ const templates = [
     stars: 1200,
     downloads: '15k',
     category: 'Research',
-    icon: SearchCode,
+    icon: Search,
     color: 'from-blue-500 to-cyan-500',
     tags: ['GPT-4o', 'WebSearch', 'PDF-Parser']
   },
