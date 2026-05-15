@@ -7,7 +7,6 @@ import {
   Bot,
   Rocket,
   CheckCircle2,
-  Activity,
 } from 'lucide-react';
 import { projects, agents, deployments, activityItems } from '@/lib/mock-data';
 import { PromptInput } from '@/components/dashboard/prompt-input';
@@ -15,6 +14,7 @@ import { FileExplorer } from '@/components/dashboard/file-explorer';
 import { CodePreview } from '@/components/dashboard/code-preview';
 import { AgentPanel } from '@/components/dashboard/agent-panel';
 import { ActivityTimeline } from '@/components/dashboard/activity-timeline';
+import { ThoughtStream } from '@/components/dashboard/thought-stream';
 import { cn } from '@/lib/utils';
 import type { ProjectFile } from '@/lib/types';
 
@@ -161,29 +161,6 @@ function RecentDeployments() {
   );
 }
 
-function LivePreviewPlaceholder() {
-  return (
-    <motion.div
-      variants={itemVariants}
-      className="flex h-[400px] items-center justify-center overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl"
-    >
-      <div className="text-center">
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/[0.05]">
-          <Activity className="h-8 w-8 text-gray-600" />
-        </div>
-        <p className="text-sm font-medium text-gray-400">Live Preview</p>
-        <p className="mt-1 text-xs text-gray-600">
-          Running application will appear here
-        </p>
-        <div className="mt-4 flex items-center justify-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-gray-700" />
-          <span className="text-xs text-gray-600">Waiting for dev server...</span>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function DashboardPage() {
   const [selectedFile, setSelectedFile] = useState<ProjectFile | undefined>(
     undefined
@@ -212,7 +189,7 @@ export default function DashboardPage() {
         <PromptInput />
       </motion.div>
 
-      {/* Main Grid: File Explorer + Code Preview + Live Preview */}
+      {/* Main Grid: File Explorer + Code Preview + Agent Thought Stream */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <motion.div variants={itemVariants} className="lg:col-span-1">
           <FileExplorer onFileSelect={handleFileSelect} />
@@ -221,7 +198,7 @@ export default function DashboardPage() {
           <CodePreview file={selectedFile} />
         </motion.div>
         <motion.div variants={itemVariants} className="lg:col-span-1">
-          <LivePreviewPlaceholder />
+          <ThoughtStream />
         </motion.div>
       </div>
 

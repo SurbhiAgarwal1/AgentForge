@@ -12,6 +12,7 @@ import {
   GitBranch,
   Rocket,
   Brain,
+  ShoppingBag,
   Settings,
   ChevronLeft,
   ChevronRight,
@@ -21,6 +22,7 @@ import { cn } from '@/lib/utils';
 
 const navItems = [
   { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+  { label: 'Marketplace', href: '/dashboard/marketplace', icon: ShoppingBag },
   { label: 'Agents', href: '/dashboard/agents', icon: Bot },
   { label: 'Projects', href: '/dashboard/projects', icon: FolderKanban },
   { label: 'Workflows', href: '/dashboard/workflows', icon: GitBranch },
