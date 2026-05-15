@@ -2,72 +2,35 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { AgentStatus } from '@/lib/types';
+
+type StatusType = 'online' | 'offline' | 'thinking' | 'error' | 'working';
 
 interface StatusBadgeProps {
-  status: AgentStatus;
+  status: StatusType;
   className?: string;
 }
 
-const statusConfig: Record<
-  AgentStatus,
-  { label: string; dotColor: string; bgColor: string; textColor: string }
-> = {
-  thinking: {
-    label: 'Thinking',
-    dotColor: 'bg-yellow-400',
-    bgColor: 'bg-yellow-400/10',
-    textColor: 'text-yellow-400',
-  },
-  working: {
-    label: 'Working',
-    dotColor: 'bg-cyan-400',
-    bgColor: 'bg-cyan-400/10',
-    textColor: 'text-cyan-400',
-  },
-  reviewing: {
-    label: 'Reviewing',
-    dotColor: 'bg-purple-400',
-    bgColor: 'bg-purple-400/10',
-    textColor: 'text-purple-400',
-  },
-  idle: {
-    label: 'Idle',
-    dotColor: 'bg-gray-400',
-    bgColor: 'bg-gray-400/10',
-    textColor: 'text-gray-400',
-  },
-  completed: {
-    label: 'Completed',
-    dotColor: 'bg-green-400',
-    bgColor: 'bg-green-400/10',
-    textColor: 'text-green-400',
-  },
-  error: {
-    label: 'Error',
-    dotColor: 'bg-red-400',
-    bgColor: 'bg-red-400/10',
-    textColor: 'text-red-400',
-  },
+const statusStyles: Record<StatusType, { color: string; label: string; animate: boolean }> = {
+  online: { color: 'bg-green-500', label: 'Online', animate: false },
+  offline: { color: 'bg-gray-500', label: 'Offline', animate: false },
+  thinking: { color: 'bg-purple-500', label: 'Thinking', animate: true },
+  error: { color: 'bg-red-500', label: 'Error', animate: false },
+  working: { color: 'bg-cyan-500', label: 'Working', animate: true },
 };
 
 export function StatusBadge({ status, className }: StatusBadgeProps) {
-  const config = statusConfig[status];
+  const style = statusStyles[status];
 
   return (
-    <span
-      className={cn(
-        'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
-        config.bgColor,
-        config.textColor,
-        className
-      )}
-    >
-      <span
-        className={cn('h-1.5 w-1.5 rounded-full', config.dotColor)}
-        aria-hidden="true"
-      />
-      {config.label}
-    </span>
+    <div className={cn("flex items-center gap-2 rounded-full px-2 py-0.5 bg-white/5 border border-white/10", className)}>
+      <div className={cn(
+        "h-1.5 w-1.5 rounded-full",
+        style.color,
+        style.animate && "animate-pulse shadow-[0_0_8px_rgba(var(--status-color),0.5)]"
+      )} />
+      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+        {style.label}
+      </span>
+    </div>
   );
 }
